@@ -1,0 +1,10 @@
+package component:markdown-renderer;
+
+interface markdown-fns {
+    render: func(content: string) -> string;
+}
+
+/// An example world for the component to target.
+world markdown-tools {
+    export markdown-fns;
+}

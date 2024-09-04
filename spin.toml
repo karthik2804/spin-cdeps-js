@@ -1,0 +1,20 @@
+spin_manifest_version = 2
+
+[application]
+authors = ["karthik2804 <karthik.ganeshram@fermyon.com>"]
+description = ""
+name = "component-dep-test"
+version = "0.1.0"
+
+[[trigger.http]]
+route = "/..."
+component = "component-dep-test"
+
+[component.component-dep-test]
+source = "target/component-dep-test.wasm"
+exclude_files = ["**/node_modules"]
+[component.component-dep-test.build]
+command = "npm run build"
+watch = ["src/**/*.ts", "package.json"]
+[component.component-dep-test.dependencies]
+"component:markdown-renderer/markdown-fns" = { path = "markdown-renderer/target/wasm32-wasip1/release/markdown_renderer.wasm" }
